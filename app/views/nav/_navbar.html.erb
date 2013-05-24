@@ -1,10 +1,19 @@
-<%= render 	'devise/menu/registration_items' %>
-<%= render 	'devise/menu/login_items' %>
-<br>
-<%= link_to 'Home', root_path %>
-<%= link_to 'All Posts', 	posts_path %>
-<%= render 'nav/newpost' %>
-<br>
-<%= render 'nav/editprofile' %>
-<br>
-<%= render 'nav/behavior'%>
+<div class="row blackbar">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class ="brand"><%= link_to 'Home', root_path %></div>
+			<ul class="nav">
+				<li><%= render 	'devise/menu/registration_items' %></li>
+				<li><%= render 	'devise/menu/login_items' %></li>
+				<li><%= link_to 'All Posts', 	posts_path %></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="row greybar">
+
+<div class="span5"><%= render 'nav/editprofile' %></div>
+<div class="span5"><%= render 'nav/behavior'%></div>
+<div class="span2"><%= render 'nav/newpost' %></div>
+</div>

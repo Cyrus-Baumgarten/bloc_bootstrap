@@ -7,12 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<%= render	'nav/navbar' %>
-	<%= render 'layouts/flashes' %>
+	<div class="container">
+		<%= render	'nav/navbar' %>
+		<%= render 'layouts/flashes' %>
 	
-	
-
-<%= yield %>
-
+		<div class="row">
+			<div class="span8 greybar">
+			<%= yield %>
+			</div>
+			<div class="span4 greybar">
+				Stories
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="span12 blackbar">
+				Footer Bar
+			</div>
+		</div>
+		
+	</div>
 </body>
 </html>
