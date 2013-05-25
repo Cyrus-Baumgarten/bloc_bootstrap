@@ -17,15 +17,11 @@ Showing Post
 
 </br>
 <div id="comments" style="display:none">
-	<p>Comments for this article:</p>
-	<%= render @comments %>
-
-	<p>
 		<%= form_for @comment do |f| %> 
 		<%= f.hidden_field :post_id, value: @post.id %>
-		<%= f.label :body, "Post Comment" %>
-		<%= f.text_field :body %>
-		<%= f.submit "Submit Comment"%>
+		<%= f.text_field :body, placeholder: "Comment..." %>
+		<%= f.submit "Submit"%>
 		<% end %>
-	</p>
+	
+	<%= render @comments %>
 </div>
