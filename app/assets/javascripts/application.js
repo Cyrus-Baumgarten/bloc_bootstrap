@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+	$('#comment-toggle').click(function(event){
+		$('#comments').toggle('fast', function(){
+		});
+	});
+});
