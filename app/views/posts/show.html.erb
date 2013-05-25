@@ -13,15 +13,19 @@ Showing Post
 
 
 <div id="comment-toggle">Show Comments</div>
-<br>
 
+<br>
 </br>
+
 <div id="comments" style="display:none">
-		<%= form_for @comment do |f| %> 
-		<%= f.hidden_field :post_id, value: @post.id %>
-		<%= f.text_field :body, placeholder: "Comment..." %>
-		<%= f.submit "Submit"%>
-		<% end %>
+	<%= form_for @comment, remote: true do |f| %> 
+	<%= f.hidden_field :post_id, value: @post.id %>
+	<%= f.text_field :body, placeholder: "Comment..." %>
+	<%= f.submit "Submit"%>
+	<% end %>
 	
-	<%= render @comments %>
+	<div id-"comments-list">
+		<%= render @comments %>
+	</div>
+	
 </div>

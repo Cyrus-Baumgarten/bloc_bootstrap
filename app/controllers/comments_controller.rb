@@ -8,6 +8,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       flash[:success] = "Comment created!"
+      respond_to do |format|
+        format.js
+      end
       redirect_to @post
     else
       flash[:error] = "Comment is invalid"

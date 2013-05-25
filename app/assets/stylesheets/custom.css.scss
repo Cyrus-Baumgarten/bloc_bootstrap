@@ -1,10 +1,17 @@
 @import "bootstrap";
 
+*{
+	font-family: Verdana, sans-serif;
+}
+
 .greybar {
 	background-color: gray;
 	color: white;
 	a{
 		color:black;
+		&:hover {
+			color:red;
+		}
 	}
 }
 
@@ -29,12 +36,13 @@
 	-ms-transition:.2s;
 	-moz-transition:.2s;
 	-webkit-transition:.2s;
+	&:hover {
+		background-color: red;
+		color: white;
+	}
 }
 
-#comment-toggle:hover {
-	background-color: red;
-	color: white;
-}
+
 
 #comments{
 	border-left: 2px solid white;
