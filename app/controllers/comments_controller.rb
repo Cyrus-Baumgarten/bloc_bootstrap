@@ -7,10 +7,11 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(body: params[:comment][:body])
     @comment.user = current_user
     if @comment.save
-      flash[:success] = "Comment created!"
       respond_to do |format|
-        format.js
+        format.html { flash[:success] = "Comment created!", redirect_to @post }
+        format.js { @comment_id, location: post_path(@post) }
       end
+      flash[:success] = "Comment created!"
       redirect_to @post
     else
       flash[:error] = "Comment is invalid"
