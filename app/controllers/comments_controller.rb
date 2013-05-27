@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  
+  respond_to :js
   before_filter :authenticate_user!, only: [ :create, :edit, :update, :destroy ]
   
   def create
@@ -7,10 +7,6 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(body: params[:comment][:body])
     @comment.user = current_user
     if @comment.save
-      respond_to do |format|
-        format.html { flash[:success] = "Comment created!", redirect_to @post }
-        format.js { @comment_id, location: post_path(@post) }
-      end
       flash[:success] = "Comment created!"
       redirect_to @post
     else
@@ -47,8 +43,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if user_signed_in? and (current_user.admin? or current_user == @comment.user)
       @post = @comment.post
+      @comment_id = @comment.id
       @comment.destroy
-      redirect_to @post
+      respond_with(@comment_id, :location => post_path(@post))
     else
       flash[:error] = "You are not authorized to do that"
       redirect_to root_path

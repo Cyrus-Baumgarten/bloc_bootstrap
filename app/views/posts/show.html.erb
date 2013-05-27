@@ -18,7 +18,7 @@ Showing Post
 </br>
 
 <div id="comments" style="display:none">
-	<%= form_for @comment, remote: true do |f| %> 
+	<%= form_for @comment do |f| %> 
 	<%= f.hidden_field :post_id, value: @post.id %>
 	<%= f.text_field :body, placeholder: "Comment..." %>
 	<%= f.submit "Submit"%>
