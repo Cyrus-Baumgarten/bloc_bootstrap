@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:comment][:post_id])
     @comment = @post.comments.build(body: params[:comment][:body])
     @comment.user = current_user
+    @comment_id = @comment.id
     if @comment.save
+      @comments = Comment.all
       respond_with(:location => post_path(@post))
     else
       flash[:error] = "Comment is invalid"
